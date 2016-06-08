@@ -1,0 +1,374 @@
+<?xml version="1.0"?>
+<aws:UrlInfoResponse xmlns:aws="http://alexa.amazonaws.com/doc/2005-10-05/">
+<aws:Response xmlns:aws="http://awis.amazonaws.com/doc/2005-07-11">
+<aws:OperationRequest>
+<aws:RequestId>a700a441-c423-bacb-61af-d1d559347b69</aws:RequestId>
+</aws:OperationRequest>
+<aws:UrlInfoResult>
+<aws:Alexa>
+  
+  <aws:ContentData>
+    <aws:DataUrl type="canonical">insa-rouen.fr</aws:DataUrl>
+
+    <aws:SiteData>
+      <aws:Title>Institut National des Sciences AppliquÃ©es de Rouen (INSA)</aws:Title>
+      <aws:Description>PrÃ©sentation de l'Ã©cole qui forme en 5 ans des ingÃ©nieurs. Seine-Maritime (76).</aws:Description>
+    </aws:SiteData>
+
+    <aws:Speed>
+      <aws:MedianLoadTime>956</aws:MedianLoadTime>
+      <aws:Percentile>79</aws:Percentile>
+    </aws:Speed>
+
+    <aws:AdultContent>no</aws:AdultContent>
+
+    <aws:Language>
+      <aws:Locale>fr</aws:Locale>
+      <aws:Encoding>utf-8</aws:Encoding>
+    </aws:Language>
+
+    <aws:LinksInCount>437</aws:LinksInCount>
+
+    <aws:OwnedDomains/>
+  </aws:ContentData>
+
+
+  <aws:Related>
+    <aws:DataUrl type="canonical">insa-rouen.fr</aws:DataUrl>
+    <aws:Categories>
+      <aws:CategoryData>
+        <aws:Title>Chimie/Centres de recherche</aws:Title>
+        <aws:AbsolutePath>Top/World/FranÃ§ais/Sciences/Chimie/Centres_de_recherche</aws:AbsolutePath>
+      </aws:CategoryData>
+      <aws:CategoryData>
+        <aws:Title>Rouen/Enseignement et formation</aws:Title>
+        <aws:AbsolutePath>Top/World/FranÃ§ais/RÃ©gional/Europe/France/RÃ©gions/Haute-Normandie/Seine-Maritime/Villes_et_villages/Rouen/Enseignement_et_formation</aws:AbsolutePath>
+      </aws:CategoryData>
+      <aws:CategoryData>
+        <aws:Title>Ecoles d'ingÃ©nieurs/Instituts nationaux des sciences appliquÃ©es (INSA)</aws:Title>
+        <aws:AbsolutePath>Top/World/FranÃ§ais/RÃ©gional/Europe/France/Enseignement_et_formation/Enseignement_supÃ©rieur/Ecoles_d'ingÃ©nieurs/Instituts_nationaux_des_sciences_appliquÃ©es_(INSA)</aws:AbsolutePath>
+      </aws:CategoryData>
+    </aws:Categories>
+  </aws:Related>
+
+
+  <aws:TrafficData>
+    <aws:DataUrl type="canonical">insa-rouen.fr</aws:DataUrl>
+    <aws:Rank>273869</aws:Rank>
+
+    <aws:RankByCountry>
+      <aws:Country Code="MA">
+        <aws:Rank>18394</aws:Rank>
+        <aws:Contribution>
+          <aws:PageViews>1.2%</aws:PageViews>
+          <aws:Users>4.0%</aws:Users>
+        </aws:Contribution>
+      </aws:Country>
+
+      <aws:Country Code="GB">
+        <aws:Rank>153518</aws:Rank>
+        <aws:Contribution>
+          <aws:PageViews>3.2%</aws:PageViews>
+          <aws:Users>2.8%</aws:Users>
+        </aws:Contribution>
+      </aws:Country>
+
+      <aws:Country Code="FR">
+        <aws:Rank>7930</aws:Rank>
+        <aws:Contribution>
+          <aws:PageViews>69.1%</aws:PageViews>
+          <aws:Users>66.3%</aws:Users>
+        </aws:Contribution>
+      </aws:Country>
+
+      <aws:Country Code="DZ">
+        <aws:Rank>13267</aws:Rank>
+        <aws:Contribution>
+          <aws:PageViews>2.4%</aws:PageViews>
+          <aws:Users>8.9%</aws:Users>
+        </aws:Contribution>
+      </aws:Country>
+
+      <aws:Country Code="O">
+        <aws:Rank/>
+        <aws:Contribution>
+          <aws:PageViews>24.2%</aws:PageViews>
+          <aws:Users>18.1%</aws:Users>
+        </aws:Contribution>
+      </aws:Country>
+    </aws:RankByCountry>
+
+
+    <aws:UsageStatistics>
+      <aws:UsageStatistic>
+        <aws:TimeRange>
+          <aws:Months>3</aws:Months>
+        </aws:TimeRange>
+
+        <aws:Rank>
+          <aws:Value>273869</aws:Value>
+          <aws:Delta>-180094</aws:Delta>
+        </aws:Rank>
+
+
+        <aws:Reach>
+          <aws:Rank>
+            <aws:Value>290909</aws:Value>
+            <aws:Delta>-126294</aws:Delta>
+          </aws:Rank>
+
+          <aws:PerMillion>
+            <aws:Value>2.8</aws:Value>
+            <aws:Delta>+40%</aws:Delta>
+          </aws:PerMillion>
+        </aws:Reach>
+
+
+        <aws:PageViews>
+          <aws:PerMillion>
+            <aws:Value>0.14</aws:Value>
+            <aws:Delta>+140%</aws:Delta>
+          </aws:PerMillion>
+
+          <aws:Rank>
+            <aws:Value>291510</aws:Value>
+            <aws:Delta>-342962</aws:Delta>
+          </aws:Rank>
+
+          <aws:PerUser>
+            <aws:Value>3.4</aws:Value>
+            <aws:Delta>+70%</aws:Delta>
+          </aws:PerUser>
+        </aws:PageViews>
+
+
+      </aws:UsageStatistic>
+      <aws:UsageStatistic>
+        <aws:TimeRange>
+          <aws:Months>1</aws:Months>
+        </aws:TimeRange>
+
+        <aws:Rank>
+          <aws:Value>186183</aws:Value>
+          <aws:Delta>-72365</aws:Delta>
+        </aws:Rank>
+
+        <aws:Reach>
+          <aws:Rank>
+            <aws:Value>205203</aws:Value>
+            <aws:Delta>-66492</aws:Delta>
+          </aws:Rank>
+
+          <aws:PerMillion>
+            <aws:Value>4.2</aws:Value>
+            <aws:Delta>+33%</aws:Delta>
+          </aws:PerMillion>
+        </aws:Reach>
+
+        <aws:PageViews>
+          <aws:PerMillion>
+            <aws:Value>0.25</aws:Value>
+            <aws:Delta>+65%</aws:Delta>
+          </aws:PerMillion>
+
+          <aws:Rank>
+            <aws:Value>182090</aws:Value>
+            <aws:Delta>-105174</aws:Delta>
+          </aws:Rank>
+
+          <aws:PerUser>
+            <aws:Value>4.0</aws:Value>
+            <aws:Delta>+20%</aws:Delta>
+          </aws:PerUser>
+        </aws:PageViews>
+      </aws:UsageStatistic>
+
+
+      <aws:UsageStatistic>
+        <aws:TimeRange>
+          <aws:Days>7</aws:Days>
+        </aws:TimeRange>
+
+        <aws:Rank>
+          <aws:Value>154543</aws:Value>
+          <aws:Delta>-89816</aws:Delta>
+        </aws:Rank>
+
+        <aws:Reach>
+          <aws:Rank>
+            <aws:Value>175038</aws:Value>
+            <aws:Delta>-72746</aws:Delta>
+          </aws:Rank>
+
+          <aws:PerMillion>
+            <aws:Value>5.1</aws:Value>
+            <aws:Delta>+50%</aws:Delta>
+          </aws:PerMillion>
+        </aws:Reach>
+
+        <aws:PageViews>
+          <aws:PerMillion>
+            <aws:Value>0.33</aws:Value>
+            <aws:Delta>+140%</aws:Delta>
+          </aws:PerMillion>
+          <aws:Rank>
+            <aws:Value>146750</aws:Value>
+            <aws:Delta>-157315</aws:Delta>
+          </aws:Rank>
+          <aws:PerUser>
+            <aws:Value>4.4</aws:Value>
+            <aws:Delta>+60%</aws:Delta>
+          </aws:PerUser>
+        </aws:PageViews>
+      </aws:UsageStatistic>
+
+
+      <aws:UsageStatistic>
+        <aws:TimeRange>
+          <aws:Days>1</aws:Days>
+        </aws:TimeRange>
+
+        <aws:Rank>
+          <aws:Value>139484</aws:Value>
+          <aws:Delta>+24712</aws:Delta>
+        </aws:Rank>
+
+        <aws:Reach>
+          <aws:Rank>
+            <aws:Value>166265</aws:Value>
+            <aws:Delta>+24081</aws:Delta>
+          </aws:Rank>
+          <aws:PerMillion>
+            <aws:Value>6</aws:Value>
+            <aws:Delta>-17.18%</aws:Delta>
+          </aws:PerMillion>
+        </aws:Reach>
+
+        <aws:PageViews>
+          <aws:PerMillion>
+            <aws:Value>0.43</aws:Value>
+            <aws:Delta>-21.83%</aws:Delta>
+          </aws:PerMillion>
+
+          <aws:Rank>
+            <aws:Value>121642</aws:Value>
+            <aws:Delta>22332</aws:Delta>
+          </aws:Rank>
+
+          <aws:PerUser>
+            <aws:Value>5</aws:Value>
+            <aws:Delta>-5.50%</aws:Delta>
+          </aws:PerUser>
+        </aws:PageViews>
+      </aws:UsageStatistic>
+    </aws:UsageStatistics>
+
+
+    <aws:ContributingSubdomains>
+      <aws:ContributingSubdomain>
+        <aws:DataUrl>sogo.insa-rouen.fr</aws:DataUrl>
+        <aws:TimeRange>
+          <aws:Months>1</aws:Months>
+        </aws:TimeRange>
+        <aws:Reach>
+          <aws:Percentage>44.27%</aws:Percentage>
+        </aws:Reach>
+        <aws:PageViews>
+          <aws:Percentage>20.54%</aws:Percentage>
+          <aws:PerUser>1.9</aws:PerUser>
+        </aws:PageViews>
+      </aws:ContributingSubdomain>
+
+      <aws:ContributingSubdomain>
+        <aws:DataUrl>moodle.insa-rouen.fr</aws:DataUrl>
+        <aws:TimeRange>
+          <aws:Months>1</aws:Months>
+        </aws:TimeRange>
+        <aws:Reach>
+          <aws:Percentage>22.43%</aws:Percentage>
+        </aws:Reach>
+        <aws:PageViews>
+          <aws:Percentage>19.06%</aws:Percentage>
+          <aws:PerUser>3.4</aws:PerUser>
+        </aws:PageViews>
+      </aws:ContributingSubdomain>
+
+      <aws:ContributingSubdomain>
+        <aws:DataUrl>cas.insa-rouen.fr</aws:DataUrl>
+        <aws:TimeRange>
+          <aws:Months>1</aws:Months>
+        </aws:TimeRange>
+        <aws:Reach>
+          <aws:Percentage>46.84%</aws:Percentage>
+        </aws:Reach>
+        <aws:PageViews>
+          <aws:Percentage>16.05%</aws:Percentage>
+          <aws:PerUser>1.4</aws:PerUser>
+        </aws:PageViews>
+      </aws:ContributingSubdomain>
+
+      <aws:ContributingSubdomain>
+        <aws:DataUrl>agendas.insa-rouen.fr</aws:DataUrl>
+        <aws:TimeRange>
+          <aws:Months>1</aws:Months>
+        </aws:TimeRange>
+        <aws:Reach>
+          <aws:Percentage>15.07%</aws:Percentage>
+        </aws:Reach>
+        <aws:PageViews>
+          <aws:Percentage>14.20%</aws:Percentage>
+          <aws:PerUser>3.7</aws:PerUser>
+        </aws:PageViews>
+      </aws:ContributingSubdomain>
+
+      <aws:ContributingSubdomain>
+        <aws:DataUrl>asi.insa-rouen.fr</aws:DataUrl>
+        <aws:TimeRange>
+          <aws:Months>1</aws:Months>
+        </aws:TimeRange>
+        <aws:Reach>
+          <aws:Percentage>24.78%</aws:Percentage>
+        </aws:Reach>
+        <aws:PageViews>
+          <aws:Percentage>7.65%</aws:Percentage>
+          <aws:PerUser>1.2</aws:PerUser>
+        </aws:PageViews>
+      </aws:ContributingSubdomain>
+
+      <aws:ContributingSubdomain>
+        <aws:DataUrl>insa-rouen.fr</aws:DataUrl>
+        <aws:TimeRange>
+          <aws:Months>1</aws:Months>
+        </aws:TimeRange>
+        <aws:Reach>
+          <aws:Percentage>7.35%</aws:Percentage>
+        </aws:Reach>
+        <aws:PageViews>
+          <aws:Percentage>4.25%</aws:Percentage>
+          <aws:PerUser>2.3</aws:PerUser>
+        </aws:PageViews>
+      </aws:ContributingSubdomain>
+
+      <aws:ContributingSubdomain>
+        <aws:DataUrl>OTHER</aws:DataUrl>
+        <aws:TimeRange>
+          <aws:Months>1</aws:Months>
+        </aws:TimeRange>
+        <aws:Reach>
+          <aws:Percentage>0</aws:Percentage>
+        </aws:Reach>
+        <aws:PageViews>
+          <aws:Percentage>18.25%</aws:Percentage>
+          <aws:PerUser>0</aws:PerUser>
+        </aws:PageViews>
+      </aws:ContributingSubdomain>
+    </aws:ContributingSubdomains>
+  </aws:TrafficData>
+</aws:Alexa>
+</aws:UrlInfoResult>
+<aws:ResponseStatus xmlns:aws="http://alexa.amazonaws.com/doc/2005-10-05/">
+<aws:StatusCode>Success</aws:StatusCode>
+</aws:ResponseStatus>
+</aws:Response>
+</aws:UrlInfoResponse>
+
