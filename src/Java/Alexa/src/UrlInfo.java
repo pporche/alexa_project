@@ -170,9 +170,15 @@ public class UrlInfo {
 
 			// use comma as separator
 				String[] column = line.split(cvsSplitBy);
+				String nameInCsv = column[0];
+				String urlInCsv = column[2];
 
-				if((column[0]!="")&&(column[2]!=""))
-				hmap.put(column[0], column[2]);
+				if((nameInCsv!="")&&(urlInCsv!="")){
+					if(!urlInCsv.startsWith("http")){
+						urlInCsv="http://"+urlInCsv;
+					}
+					hmap.put(nameInCsv, urlInCsv);
+				}
 			}
 
 		} catch (FileNotFoundException e) {
