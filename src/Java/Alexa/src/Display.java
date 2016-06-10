@@ -119,7 +119,7 @@ public class Display extends JFrame {
 					urlInfo.writeCsv(hmComplete, saveDirectory+"/alexaOutput.csv");
 					dispose();
 				} catch (Exception exception) {
-					System.out.println(exception);
+					exception.printStackTrace(System.err);
 				}
 			}
 		});

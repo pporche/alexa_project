@@ -168,16 +168,18 @@ public class UrlInfo {
 			br = new BufferedReader(new FileReader(nameOfCsvFile));
 			while ((line = br.readLine()) != null) {
 
-			// use comma as separator
+				// use comma as separator
 				String[] column = line.split(cvsSplitBy);
-				String nameInCsv = column[0];
-				String urlInCsv = column[2];
+				if (column.length>1){
+					String nameInCsv = column[0];
+					String urlInCsv = column[1];
 
-				if((nameInCsv!="")&&(urlInCsv!="")){
-					if(!urlInCsv.startsWith("http")){
-						urlInCsv="http://"+urlInCsv;
+					if((nameInCsv!="")&&(urlInCsv!="")){
+						if(!urlInCsv.startsWith("http")){
+							urlInCsv="http://"+urlInCsv;
+						}
+						hmap.put(nameInCsv, urlInCsv);
 					}
-					hmap.put(nameInCsv, urlInCsv);
 				}
 			}
 
