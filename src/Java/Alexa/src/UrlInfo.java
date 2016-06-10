@@ -32,13 +32,11 @@ public class UrlInfo {
     private static final String AWS_BASE_URL = "http://" + SERVICE_HOST + "/?";
     private static final String HASH_ALGORITHM = "HmacSHA256";
 
-
     ///////////////
     // DO CHANGE //
     ///////////////
     //next are Pierre Porche's personnal keys.
-	private static final String ACCESS_KEY = "AKIAJQIE22H3FWJU757Q";
-    private static final String SECRET_KEY = "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";
+    private static String precedentData = "data/precedent.ser";
 
 
     private static final String DATEFORMAT_AWS = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
@@ -51,6 +49,12 @@ public class UrlInfo {
         this.accessKeyId = accessKeyId;
         this.secretAccessKey = secretAccessKey;
         this.site = site;
+    }
+
+    public UrlInfo() {
+        this.accessKeyId = "";
+        this.secretAccessKey = "";
+        this.site = "";
     }
 
     /**
@@ -103,13 +107,13 @@ public class UrlInfo {
 
 
     public static void serializePrecedent(HashMap<String, InfosAlexa> hmap) throws Exception {
-    	File yourFile = new File("data/precedent.ser");
+    	File yourFile = new File(precedentData);
 		if(!yourFile.exists()) {
     		yourFile.createNewFile();
 		} 
 
 		try {
-        	FileOutputStream fos = new FileOutputStream("data/precedent.ser");
+        	FileOutputStream fos = new FileOutputStream(precedentData);
         	ObjectOutputStream oos = new ObjectOutputStream(fos);
         	oos.writeObject(hmap);
         	fos.flush();
@@ -127,12 +131,12 @@ public class UrlInfo {
 		
 		HashMap<String, InfosAlexa> hmap = new HashMap<String, InfosAlexa>();
 
-		File yourFile = new File("data/precedent.ser");
+		File yourFile = new File(precedentData);
 		if(yourFile.exists()) {
 
 			try
 			{
-				FileInputStream fis = new FileInputStream("data/precedent.ser");
+				FileInputStream fis = new FileInputStream(precedentData);
 				ObjectInputStream ois = new ObjectInputStream(fis);
 				hmap = (HashMap) ois.readObject();
 				ois.close();
@@ -189,10 +193,10 @@ public class UrlInfo {
 		return hmap;
 	}
 
-	public static void writeCsv(HashMap<String, InfosAlexa> myHashMap){
+	public static void writeCsv(HashMap<String, InfosAlexa> myHashMap, String fileName){
 		String eol = System.getProperty("line.separator");
 
-		try (Writer writer = new FileWriter("data/somefile.csv", false)) {
+		try (Writer writer = new FileWriter(fileName, false)) {
 			for (Map.Entry<String, InfosAlexa> entry : myHashMap.entrySet()) {
 				String[] countryName = new String[200];
 				Integer[] countryRank = new Integer[200];
@@ -219,7 +223,7 @@ public class UrlInfo {
 				writer.append(name).append(',');
 				writer.append(url).append(',');
 
-				for(Integer j=0;j<5;j++){
+				for(Integer j=4;j>=0;j--){
 					if (countryName[j]!=null){
 						writer.append(countryName[j]).append(": ");
 						writer.append(""+countryPercentage[j]).append("% rank: ");
@@ -242,18 +246,14 @@ public class UrlInfo {
 
 
 	
-	public static HashMap<String, InfosAlexa> getInfosFromAlexa(HashMap<String, String> entryHMap, HashMap<String, InfosAlexa> completeHMap) throws Exception {
+	public static HashMap<String, InfosAlexa> getInfosFromAlexa(HashMap<String, String> entryHMap, 
+		HashMap<String, InfosAlexa> completeHMap, String accessKey, String secretKey) throws Exception {
 
 		HashMap<String, InfosAlexa> result = new HashMap<String, InfosAlexa>();
 		result.putAll(completeHMap);
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		dbf.setNamespaceAware(true);
 		DocumentBuilder docBuilder= dbf.newDocumentBuilder();
-
-
-
-		String accessKey = ACCESS_KEY;
-		String secretKey = SECRET_KEY;
 
 
 		for (String name : entryHMap.keySet()) {
@@ -266,81 +266,40 @@ public class UrlInfo {
 				String signature = urlInfo.generateSignature(toSign);
 				String uri = AWS_BASE_URL + query + "&Signature=" +	URLEncoder.encode(signature, "UTF-8");
 
-
 				InfosAlexa infos = new InfosAlexa();
-
 				URL url = new URL(uri);
-
 				HashMap<String, Integer> rankInCountry = new HashMap<String, Integer>();
-
 				HashMap<String, Float> percentUserCountry = new HashMap<String, Float>();
-
 				URLConnection conn = url.openConnection();
-
-
 				InputStream in = conn.getInputStream();
 				Document responseDoc = dbf.newDocumentBuilder().parse(in);
-
 				Element ranknode = (Element) responseDoc.getElementsByTagNameNS("*", "Rank").item(0);
-
 				infos.setRank(Integer.parseInt(ranknode.getFirstChild().getNodeValue()));
 				infos.setUrl(entryHMap.get(name));
-
 				NodeList countries = responseDoc.getElementsByTagNameNS("*", "Country");
 
 				for (int i = 0; i < countries.getLength(); i++) {
             		Element country = (Element) countries.item(i);
-
             		String countryCode = country.getAttribute("Code");
 
             		if(countryCode.length()!=1){
             			Element ric = (Element) country.getElementsByTagNameNS("*", "Rank").item(0);
-
             			rankInCountry.put(countryCode, Integer.parseInt(ric.getFirstChild().getNodeValue()));
             		} else {
             			rankInCountry.put(countryCode,0);
             		}
 
-
             		Element puc = (Element) country.getElementsByTagNameNS("*", "Users").item(0);
 					percentUserCountry.put(countryCode, Float.parseFloat(removeLastChar(puc.getFirstChild().getNodeValue())) );
 				}
-
 				infos.setRankInCountry(rankInCountry);
 				infos.setPercentUserCountry(percentUserCountry);
-
 				result.put(name, infos);
-
 			}
-
 		}
-
 		return result;
-
 	}
 
-
-
-
-    /**
-     * Makes a request to the specified Url and return the results as a String
-     *
-     * @param requestUrl url to make request to
-     * @return the XML document as a String
-     * @throws IOException
-     */
-    public static String getRank(String requestUrl) throws Exception { ///////exceptions sometimes, not logical.
-        URL url = new URL(requestUrl);
-        URLConnection conn = url.openConnection();
-        InputStream in = conn.getInputStream();
-
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        dbf.setNamespaceAware(true);
-        Document responseDoc = dbf.newDocumentBuilder().parse(in);
-        Element ranknode = (Element) responseDoc.getElementsByTagNameNS("*", "Rank").item(0);
-        String rank = ranknode.getFirstChild().getNodeValue();       
-        return(rank);
-    }
 
 
     /**
@@ -373,56 +332,19 @@ public class UrlInfo {
         return query;
     }
 
-    /**
-     * Makes a request to the Alexa Web Information Service UrlInfo action
-     */
-    public static String makeRequest(String site) throws Exception {
-        //String accessKey = args[0];
-        //String secretKey = args[1];
-		String accessKey = ACCESS_KEY;
-        String secretKey = SECRET_KEY;
-
-
-        UrlInfo urlInfo = new UrlInfo(accessKey, secretKey, site);
-
-        String query = urlInfo.buildQuery();
-
-        String toSign = "GET\n" + SERVICE_HOST + "\n/\n" + query;
-
-
-        String signature = urlInfo.generateSignature(toSign);
-
-        String uri = AWS_BASE_URL + query + "&Signature=" +
-                URLEncoder.encode(signature, "UTF-8");
-
-        // Make the Request
-
-        String rank = getRank(uri);
-
-        return rank;
-
-    }
-
-        // Print out the XML Response
-
+/*
     public static void main(String[] args) throws Exception {
-		String site = args[0];
-		//String rank = makeRequest(site);
-        //System.out.println(rank);
 
-        /////////testing///////////*
         HashMap<String, InfosAlexa> hmInitial = deserializePrecedent();
-
         String nameOfCsvFile = "data/testCsv.csv";
+        String csvOutput = "data/somefile.csv";
         HashMap<String, String> hmEntering = readCsv(nameOfCsvFile);
-
 		HashMap<String, InfosAlexa> hmComplete = getInfosFromAlexa(hmEntering, hmInitial);
 
-		writeCsv(hmComplete);
+		writeCsv(hmComplete, csvOutput);
 		serializePrecedent(hmComplete);
 
-//*/
     }
-
+*/
 
 }

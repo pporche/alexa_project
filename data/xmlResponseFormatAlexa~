@@ -26,7 +26,6 @@
     <aws:LinksInCount>356373</aws:LinksInCount>
     <aws:OwnedDomains/>
   </aws:ContentData>
-
   <aws:Related>
     <aws:DataUrl type="canonical">alexa.com</aws:DataUrl>
     <aws:Categories>
@@ -36,7 +35,6 @@
       </aws:CategoryData>
     </aws:Categories>
   </aws:Related>
-
   <aws:TrafficData>
     <aws:DataUrl type="canonical">alexa.com</aws:DataUrl>
     <aws:Rank>1815</aws:Rank>
