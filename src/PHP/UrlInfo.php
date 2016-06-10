@@ -117,7 +117,7 @@ $urlInfo = new UrlInfo($accessKeyId, $secretAccessKey, $site);
 $xmlInfo = $urlInfo->getUrlInfo();
 
 
-////////////////////////Test Display///////////////////////////////////////
+////////////////////////Test Display/////////////////////////////
 $results = array(
     'Adult Content'  => $xmlInfo->ContentData->AdultContent,
     'Links In Count' => $xmlInfo->ContentData->LinksInCount,
@@ -131,6 +131,6 @@ echo "\nResults for " . $site .":\n\n";
 foreach($results as $key => $value) {
     echo $key . ': ' . $value ."\n";
 }
-////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
 
 ?>

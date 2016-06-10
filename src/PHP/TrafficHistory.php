@@ -4,11 +4,11 @@
  */
 class UrlInfo {
 
-    protected static $ActionName        = 'UrlInfo';
-    protected static $ResponseGroupName = 'Rank,LinksInCount,Categories,RankByCountry,UsageStats,AdultContent,Speed,Language,OwnedDomains,SiteData';
-    protected static $ServiceHost      = 'awis.amazonaws.com';
-    protected static $NumReturn         = 10;
-    protected static $StartNum          = 1;
+    protected static $ActionName        = 'TrafficHistory';
+    protected static $ResponseGroupName = 'History';
+    protected static $ServiceHost       = 'awis.amazonaws.com';
+    protected static $Range             = 31;  // x<=31
+    protected static $StartDate         = 20160701;
     protected static $SigVersion        = '2';
     protected static $HashAlgorithm     = 'HmacSHA256';
 
@@ -50,8 +50,8 @@ class UrlInfo {
             'ResponseGroup'     => self::$ResponseGroupName,
             'AWSAccessKeyId'    => $this->accessKeyId,
             'Timestamp'         => self::getTimestamp(),
-            'Range'             => self::$NumReturn,
-            'Start'             => self::$StartNum,
+            'Range'             => self::$Range,
+            'Start'             => self::$StartDate,
             'SignatureVersion'  => self::$SigVersion,
             'SignatureMethod'   => self::$HashAlgorithm,
             'Url'               => $this->site
@@ -88,8 +88,8 @@ class UrlInfo {
         $xml = new SimpleXMLElement($response,null,false,
                                     'http://awis.amazonaws.com/doc/2005-07-11');
 
-        if($xml->count() && $xml->Response->UrlInfoResult->Alexa->count()) {
-            $info = $xml->Response->UrlInfoResult->Alexa;
+        if($xml->count() && $xml->Response->TrafficHistoryResult->Alexa->count()) {
+            $info = $xml->Response->TrafficHistoryResult->Alexa->TrafficHistory;
         }
         return $info;
     }
@@ -113,15 +113,13 @@ $secretAccessKey = $argv[2];
 $site = $argv[3];
 
 
-$urlInfo = new UrlInfo($accessKeyId, $secretAccessKey, $site);
-$xmlInfo = $urlInfo->getUrlInfo();
+$trafficHistory = new UrlInfo($accessKeyId, $secretAccessKey, $site);
+$xmlInfo = $trafficHistory->getUrlInfo();
 
-
-////////////////////////Test Display///////////////////////////////////////
 $results = array(
-    'Adult Content'  => $xmlInfo->ContentData->AdultContent,
-    'Links In Count' => $xmlInfo->ContentData->LinksInCount,
-    'Rank'    => $xmlInfo->TrafficData->Rank
+    'Range'  => $xmlInfo->Range,
+    'Site'   => $xmlInfo->Site,
+    'Start'  => $xmlInfo->Start
 
 );
 
@@ -131,6 +129,6 @@ echo "\nResults for " . $site .":\n\n";
 foreach($results as $key => $value) {
     echo $key . ': ' . $value ."\n";
 }
-////////////////////////////////////////////////////////////////////////////
+
 
 ?>

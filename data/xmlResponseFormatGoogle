@@ -52,6 +52,7 @@
       </aws:CategoryData>
     </aws:Categories>
   </aws:Related>
+
   <aws:TrafficData>
     <aws:DataUrl type="canonical">google.com</aws:DataUrl>
     <aws:Rank>1</aws:Rank>
