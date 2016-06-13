@@ -4,8 +4,7 @@ import java.util.*;
 
 public class MapUtil
 {
-    public static <K, V extends Comparable<? super V>> Map<K, V> 
-        sortByValue( Map<K, V> map )
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue( Map<K, V> map )
     {
         List<Map.Entry<K, V>> list =
             new LinkedList<Map.Entry<K, V>>( map.entrySet() );
