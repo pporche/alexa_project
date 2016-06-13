@@ -32,10 +32,6 @@ public class UrlInfo {
     private static final String AWS_BASE_URL = "http://" + SERVICE_HOST + "/?";
     private static final String HASH_ALGORITHM = "HmacSHA256";
 
-    ///////////////
-    // DO CHANGE //
-    ///////////////
-    //next are Pierre Porche's personnal keys.
     private static String precedentData = "data/precedent.ser";
 
 
@@ -203,6 +199,7 @@ public class UrlInfo {
 
 	public static void writeCsv(HashMap<String, InfosAlexa> myHashMap, String fileName){
 		String eol = System.getProperty("line.separator");
+		CountryCodeConverter converter = new CountryCodeConverter();
 
 		try (Writer writer = new FileWriter(fileName, false)) {
 			for (Map.Entry<String, InfosAlexa> entry : myHashMap.entrySet()) {
@@ -233,7 +230,7 @@ public class UrlInfo {
 
 				for(Integer j=4;j>=0;j--){
 					if (countryName[j]!=null){
-						writer.append(countryName[j]).append(": ");
+						writer.append(converter.getFullCountryName(countryName[j])).append(": ");
 						writer.append(""+countryPercentage[j]).append("% rank: ");
 						writer.append(""+countryRank[j]).append(',');
 					}
@@ -281,8 +278,16 @@ public class UrlInfo {
 				URLConnection conn = url.openConnection();
 				InputStream in = conn.getInputStream();
 				Document responseDoc = dbf.newDocumentBuilder().parse(in);
+
 				Element ranknode = (Element) responseDoc.getElementsByTagNameNS("*", "Rank").item(0);
-				infos.setRank(Integer.parseInt(ranknode.getFirstChild().getNodeValue()));
+				
+				if (ranknode.getFirstChild()!=null){
+					Integer rankToSet = Integer.parseInt(ranknode.getFirstChild().getNodeValue());
+					infos.setRank(rankToSet);
+				} else {
+					infos.setRank(999999999);
+				}
+
 				infos.setUrl(entryHMap.get(name));
 				NodeList countries = responseDoc.getElementsByTagNameNS("*", "Country");
 
@@ -339,20 +344,4 @@ public class UrlInfo {
 
         return query;
     }
-
-/*
-    public static void main(String[] args) throws Exception {
-
-        HashMap<String, InfosAlexa> hmInitial = deserializePrecedent();
-        String nameOfCsvFile = "data/testCsv.csv";
-        String csvOutput = "data/somefile.csv";
-        HashMap<String, String> hmEntering = readCsv(nameOfCsvFile);
-		HashMap<String, InfosAlexa> hmComplete = getInfosFromAlexa(hmEntering, hmInitial);
-
-		writeCsv(hmComplete, csvOutput);
-		serializePrecedent(hmComplete);
-
-    }
-*/
-
 }
